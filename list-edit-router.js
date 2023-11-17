@@ -1,5 +1,13 @@
 const express = require('express');
 const listEditRouter = express.Router();
+const errorHandlerMiddleware = require('./error-handler-middleware');
+const methodValidatorMiddleware = require('./method-validator-middleware');
+
+// Middleware para manejar errores
+listEditRouter.use(errorHandlerMiddleware);
+
+// Middleware para validar métodos HTTP
+listEditRouter.use(methodValidatorMiddleware);
 
 // Ruta para crear una nueva tarea
 listEditRouter.post('/create-task', (req, res) => {

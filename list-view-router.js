@@ -1,6 +1,9 @@
-
 const express = require('express');
 const listViewRouter = express.Router();
+const paramValidatorMiddleware = require('./param-validator-middleware');
+
+// Middleware para validar parámetros
+listViewRouter.use('/:taskId', paramValidatorMiddleware);
 
 // Ruta para obtener tareas completas
 listViewRouter.get('/completed-tasks', (req, res) => {
